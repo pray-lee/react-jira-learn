@@ -5,7 +5,6 @@ import { cleanObject, useDebounce, useMount } from "../../util";
 import qs from "qs";
 
 const apiURL = process.env.REACT_APP_API_URL;
-console.log(apiURL, "apoiURL");
 
 export const ProjectListScreen = () => {
   const [param, setParam] = useState({
@@ -22,7 +21,7 @@ export const ProjectListScreen = () => {
     });
   });
 
-  const debouncedParam = useDebounce(param, 2000);
+  const debouncedParam = useDebounce(param, 300);
   const [list, setList] = useState([]);
   useEffect(() => {
     fetch(
