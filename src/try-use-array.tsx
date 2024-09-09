@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useMount, useArray } from "./util";
+import React from "react";
+import { useArray } from "./util";
 export const TsReactTest = () => {
   const persons: { name: string; age: number }[] = [
     {
