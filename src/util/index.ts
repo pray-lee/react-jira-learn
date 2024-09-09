@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 
-const isFalsy = (value) => (value === 0 ? false : !value);
-export const cleanObject = (object) => {
+interface obj {
+  [key: string]: unknown;
+}
+
+const isFalsy = (value: unknown): boolean => (value === 0 ? false : !value);
+export const cleanObject = (object: obj) => {
   const result = { ...object };
-  Object.keys(result).forEach((key) => {
+  Object.keys(result as object).forEach((key) => {
     const value = object[key];
     if (isFalsy(value)) {
       delete result[key];
@@ -12,7 +16,7 @@ export const cleanObject = (object) => {
   return result;
 };
 
-export const useMount = (callback) => {
+export const useMount = (callback: () => void) => {
   useEffect(() => {
     callback();
   }, []);
@@ -30,11 +34,25 @@ export const useMount = (callback) => {
 //   }
 // }
 
-export const useDebounce = (value, delay) => {
+export const useDebounce = <V>(value: V, delay: number): V => {
   const [debouncedValue, setDebouncedValue] = useState(value);
   useEffect(() => {
     const timeout = setTimeout(() => setDebouncedValue(value), delay);
     return () => clearTimeout(timeout);
-  }, [value]);
+  }, [value, delay]);
   return debouncedValue;
+};
+
+export const useArray = <A>(initialArray: A[]) => {
+  const [value, setValue] = useState(initialArray);
+  return {
+    value,
+    add: (item: A) => setValue([...value, item]),
+    clear: () => setValue([]),
+    removeIndex: (idx: number) => {
+      const copy = [...value];
+      copy.splice(idx, 1);
+      setValue([...copy]);
+    },
+  };
 };
