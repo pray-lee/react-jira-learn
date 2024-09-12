@@ -40,6 +40,7 @@ export const useDebounce = <V>(value: V, delay: number): V => {
     const timeout = setTimeout(() => setDebouncedValue(value), delay);
     return () => {
       clearTimeout(timeout);
+      // 每次执行的时候把定时器销毁，其实每次value的变化都会导致useEffect的变化,只不过是把定时器消了导致setTimout迟迟不执行,进而达到debounce效果
       console.log("unmount");
     };
   }, [value, delay]);
