@@ -38,7 +38,10 @@ export const useDebounce = <V>(value: V, delay: number): V => {
   const [debouncedValue, setDebouncedValue] = useState(value);
   useEffect(() => {
     const timeout = setTimeout(() => setDebouncedValue(value), delay);
-    return () => clearTimeout(timeout);
+    return () => {
+      clearTimeout(timeout);
+      console.log("unmount");
+    };
   }, [value, delay]);
   return debouncedValue;
 };
