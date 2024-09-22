@@ -1,32 +1,39 @@
 import React, { useEffect, useState } from "react";
-import { useImmer, useImmerReducer } from "use-immer";
+import { useImmerReducer } from "use-immer";
 import "./App.css";
+import { useDebounce } from "./util";
 
 function dataReducer(draft, action) {
   switch (action.type) {
     case "change":
-      console.log("change");
-      draft.value = action.value.value;
-      draft.list.push(action.value.value);
+      draft.value = action.value;
+      draft.list.push(action.value);
       break;
     case "remove":
       draft.list.splice(action.idx, 1);
       break;
   }
-  return draft;
 }
 
+let t = null;
+
 function App() {
-  const [data, dispatch] = useImmerReducer(dataReducer, {}, () => {
-    return {
-      value: "",
-      list: [],
-    };
+  const [value, setValue] = useState("");
+  const [data, dispatch] = useImmerReducer(dataReducer, {
+    value: "",
+    list: [],
   });
 
+  const debounceValue = useDebounce(value, 300);
+
   const handleChange = (e) => {
-    dispatch({ type: "change", value: e.target.value });
+    setValue(e.target.value);
   };
+
+  useEffect(() => {
+    dispatch({ type: "change", value: debounceValue });
+  }, [debounceValue]);
+
   const handleDel = (idx) => {
     dispatch({ type: "remove", idx });
   };
@@ -36,7 +43,7 @@ function App() {
       <input type="text" value={data.value} onChange={handleChange} />
       <ul>
         {data.list.map((item, index) => (
-          <li onClick={() => handleDel(index)} key={item}>
+          <li key={index} onClick={() => handleDel(index)}>
             {item}
           </li>
         ))}
