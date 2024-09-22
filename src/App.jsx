@@ -40,7 +40,7 @@ function App() {
 
   return (
     <div className="App">
-      <input type="text" value={data.value} onChange={handleChange} />
+      <input type="text" value={value} onChange={handleChange} />
       <ul>
         {data.list.map((item, index) => (
           <li key={index} onClick={() => handleDel(index)}>
