@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>react umd</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      const React = {
+        createElement: () => {},
+      };
+      const ReactDOM = {
+        createRoot: () => {},
+      };
+      function LikeButton() {
+        return React.createElement(
+          "button",
+          {
+            onClick: () => {
+              console.log("button clicked");
+            },
+          },
+          "click me",
+        );
+      }
+
+      // 获取dom节点
+      const rootNode = document.getElementById("root");
+      // 创建react实例
+      const root = ReactDOM.createRoot(rootNode);
+      // 渲染组件
+      root.render(React.createElement(LikeButton));
+    </script>
+  </body>
+</html>
