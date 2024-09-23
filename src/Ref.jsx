@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-// Ref用来保存react组件中不许哟啊驱动页面变更的数据
+// Ref用来保存react组件中不需要驱动页面变更的数据
 // 取值用ref.current
 
 function RefDemo() {
