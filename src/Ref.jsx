@@ -25,7 +25,7 @@ function RefDemo() {
   }
   return (
     <div>
-      <Child ref={childRef} />
+      <Child a={1} ref={childRef} />
       <button onClick={showRef}></button>
       {time}
       <button onClick={handleStartClick}>start</button>
