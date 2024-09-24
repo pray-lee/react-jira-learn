@@ -4,7 +4,7 @@ import "./index.css";
 // import Effect from "./Effect";
 // import RefDemo from "./Ref";
 // import AppContext from "./AppContext";
-import MemoDemo from "./MemoDemo";
+import MemoDemo, { Time } from "./MemoDemo";
 import reportWebVitals from "./reportWebVitals";
 import { loadDevTools } from "jira-dev-tool";
 
@@ -13,9 +13,12 @@ const root = ReactDOM.createRoot(
 );
 loadDevTools(() =>
   root.render(
-    <React.StrictMode>
+    // <React.StrictMode>
+    <>
       <MemoDemo />
-    </React.StrictMode>,
+      <Time />
+    </>,
+    // </React.StrictMode>,
   ),
 );
 

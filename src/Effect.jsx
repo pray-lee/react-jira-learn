@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 
 // useEffect
 // effect 是在页面更新渲染之后执行的, 每次页面渲染之后，都会先执行上一次的cleanup函数,然后再执行当前的effect里面的代码
 
 export default function Effect() {
   const [count, setCount] = useState(0);
+
   useEffect(() => {
     console.log("inti", count);
     fetch("http://localhost:3000/data.json")

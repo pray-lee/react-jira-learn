@@ -1,5 +1,4 @@
-import React, { memo, useMemo, useEffect } from "react";
-import { useState } from "react";
+import React, { useState, memo, useMemo, useEffect } from "react";
 
 const Li = ({ index, item }) => {
   return (
@@ -41,7 +40,7 @@ export default function MemoDemo() {
   const [inputValue, setInputValue] = useState("");
   const [searchValue, setSearchValue] = useState("");
 
-  // 缓存一下
+  // 缓存数据用的
   const filterList = useMemo(() => {
     return list.filter((item) => item.indexOf(searchValue) > -1);
   }, [searchValue]);
@@ -81,3 +80,13 @@ function TestUseHookMemo({ someProp }) {
   }, obj);
   return <div></div>;
 }
+
+export const Time = () => {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    setInterval(() => {
+      setCount((prev) => prev + 1);
+    }, 1000);
+  }, []);
+  return <div>{count}</div>;
+};
