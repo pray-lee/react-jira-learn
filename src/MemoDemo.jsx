@@ -33,7 +33,7 @@ const Ul = memo(({ list }) => {
     </ul>
   );
 });
-// <Ul />
+// <Ul list={filterList}/>
 // ========================================================
 
 export default function MemoDemo() {
@@ -64,7 +64,18 @@ export default function MemoDemo() {
       {/*    }*/}
       {/*</ul>*/}
       {/*{Uls}*/}
-      <Ul />
+      <Ul list={filterList} />
     </div>
   );
+}
+
+function TestUseHookMemo({ someProp }) {
+  // const obj = {a:1}
+  const obj = useMemo(() => {
+    return { a: 1 };
+  }, [someProp]);
+  const memoObj = useMemo(() => {
+    return { b: 2 };
+  }, obj);
+  return <div></div>;
 }
