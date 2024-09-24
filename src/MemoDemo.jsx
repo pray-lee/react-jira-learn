@@ -9,7 +9,22 @@ const Li = ({ index, item }) => {
   );
 };
 
-const Ul = ({ list }) => {
+// ================useMemo 组件这么用================================
+// const Ul = ({ list }) => {
+//   return (
+//     <ul>
+//       {list.map((item, index) => (
+//         <Li key={index} item={item}></Li>
+//       ))}
+//     </ul>
+//   );
+// };
+// const Uls = useMemo(() => <Ul list={filterList} />, [filterList]);
+// {Uls}
+// ================================================
+
+// ===================memo包组件这么用===========================
+const Ul = memo(({ list }) => {
   return (
     <ul>
       {list.map((item, index) => (
@@ -17,7 +32,9 @@ const Ul = ({ list }) => {
       ))}
     </ul>
   );
-};
+});
+// <Ul />
+// ========================================================
 
 export default function MemoDemo() {
   const list = ["lee", "liu", "zhang", "wang"];
@@ -28,8 +45,6 @@ export default function MemoDemo() {
   const filterList = useMemo(() => {
     return list.filter((item) => item.indexOf(searchValue) > -1);
   }, [searchValue]);
-
-  const Uls = useMemo(() => <Ul list={filterList} />, [filterList]);
 
   function handleInputValue(e) {
     setInputValue(e.target.value);
@@ -48,7 +63,8 @@ export default function MemoDemo() {
       {/*        filterList.map((item, index) => (<Li key={index} item={item}></Li>))*/}
       {/*    }*/}
       {/*</ul>*/}
-      {Uls}
+      {/*{Uls}*/}
+      <Ul />
     </div>
   );
 }
