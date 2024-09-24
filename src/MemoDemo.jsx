@@ -71,9 +71,11 @@ export default function MemoDemo() {
 
 function TestUseHookMemo({ someProp }) {
   // const obj = {a:1}
+  // 先缓存obj
   const obj = useMemo(() => {
-    return { a: 1 };
+    return { a: 1, someProp: someProp };
   }, [someProp]);
+  // 在使用obj的缓存去缓存另外一个
   const memoObj = useMemo(() => {
     return { b: 2 };
   }, obj);
