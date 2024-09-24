@@ -11,7 +11,7 @@ export default function AppContext() {
         <div>{context}</div>
         <Po>
           {/*Ok的provider是111*/}
-          <Ok>{context}</Ok>
+          <Ok></Ok>
         </Po>
       </nameContext.Provider>
     </div>
@@ -21,11 +21,13 @@ export default function AppContext() {
 function Po({ children }) {
   const context = useContext(nameContext);
   return (
-    <p>
+    <div>
       {/*  hahahaha*/}
       <p>{context}</p>
-      <nameContext.Provider value={111}>{children}</nameContext.Provider>
-    </p>
+      <nameContext.Provider value={"child-child"}>
+        {children}
+      </nameContext.Provider>
+    </div>
   );
 }
 

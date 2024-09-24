@@ -1,8 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-// import App from "./App";
-import RefDemo from "./Ref";
+// import Effect from "./Effect";
+// import RefDemo from "./Ref";
+// import AppContext from "./AppContext";
+import MemoDemo from "./MemoDemo";
 import reportWebVitals from "./reportWebVitals";
 import { loadDevTools } from "jira-dev-tool";
 
@@ -12,7 +14,7 @@ const root = ReactDOM.createRoot(
 loadDevTools(() =>
   root.render(
     <React.StrictMode>
-      <RefDemo />
+      <MemoDemo />
     </React.StrictMode>,
   ),
 );

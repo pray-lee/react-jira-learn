@@ -17,7 +17,7 @@ function dataReducer(draft, action) {
 
 let t = null;
 
-function App1() {
+function AppReducer() {
   const [value, setValue] = useState("");
   const [data, dispatch] = useImmerReducer(dataReducer, {
     value: "",
@@ -52,4 +52,4 @@ function App1() {
   );
 }
 
-export default App1;
+export default AppReducer;
