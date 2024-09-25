@@ -15,7 +15,7 @@ export default function Effect() {
         console.log(data);
       })
       .catch((err) => console.log(err));
-    // 下一次更新执行上一次的effect清除
+    // 下一次更新先执行上一次的effect清除,再执行当前effect的内容
     return () => console.log(count, "clearTimeout");
   }, [count]);
 

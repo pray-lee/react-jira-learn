@@ -4,7 +4,8 @@ import "./index.css";
 // import Effect from "./Effect";
 // import RefDemo from "./Ref";
 // import AppContext from "./AppContext";
-import MemoDemo from "./MemoDemo";
+// import MemoDemo from "./MemoDemo";
+import SyncExternalStore from "./SyncExternalStore";
 import reportWebVitals from "./reportWebVitals";
 import { loadDevTools } from "jira-dev-tool";
 
@@ -13,9 +14,10 @@ const root = ReactDOM.createRoot(
 );
 loadDevTools(() =>
   root.render(
-    <React.StrictMode>
-      <MemoDemo />
-    </React.StrictMode>,
+    // <React.StrictMode>
+    //   <MemoDemo />
+    <SyncExternalStore />,
+    // </React.StrictMode>,
   ),
 );
 
