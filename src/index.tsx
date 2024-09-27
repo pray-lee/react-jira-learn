@@ -5,7 +5,9 @@ import "./index.css";
 // import RefDemo from "./Ref";
 // import AppContext from "./AppContext";
 // import MemoDemo from "./MemoDemo";
-import SyncExternalStore from "./SyncExternalStore";
+// import SyncExternalStore from "./SyncExternalStore";
+// import CallbackUse from './callbackUse'
+import DeferredValue from "./DeferredValue";
 import reportWebVitals from "./reportWebVitals";
 import { loadDevTools } from "jira-dev-tool";
 
@@ -16,7 +18,9 @@ loadDevTools(() =>
   root.render(
     // <React.StrictMode>
     //   <MemoDemo />
-    <SyncExternalStore />,
+    // <SyncExternalStore />,
+    //   <CallbackUse />,
+    <DeferredValue />,
     // </React.StrictMode>,
   ),
 );
