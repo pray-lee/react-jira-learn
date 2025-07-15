@@ -23,6 +23,7 @@ const Li = ({ index, item }) => {
 // ================================================
 
 // ===================memo包组件这么用===========================
+  console.log(123123123)
 const Ul = memo(({ list }) => {
   return (
     <ul>
@@ -38,9 +39,7 @@ const Ul = memo(({ list }) => {
 export default function MemoDemo() {
   const list = ["lee", "liu", "zhang", "wang"];
   const [inputValue, setInputValue] = useState("");
-  const [searchValue, setSearchValue] = useState("");
-
-  // 缓存数据用的
+  // 缓存数据用的a
   const filterList = useMemo(() => {
     return list.filter((item) => item.indexOf(searchValue) > -1);
   }, [searchValue]);
