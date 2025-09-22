@@ -8,7 +8,7 @@ export default function AppContext() {
     <div>
       <nameContext.Provider value="hahahaha">
         {/*initial lixiaoyong*/}
-        <div>{context}</div>
+        <div>{context} + appcontext</div>
         <Po>
           {/*Ok的provider是111*/}
           <Ok></Ok>
@@ -23,7 +23,7 @@ function Po({ children }) {
   return (
     <div>
       {/*  hahahaha*/}
-      <p>{context}</p>
+      <p>{context} + po</p>
       <nameContext.Provider value={"child-child"}>
         {children}
       </nameContext.Provider>
@@ -31,8 +31,7 @@ function Po({ children }) {
   );
 }
 
-
 function Ok() {
   const context = useContext(nameContext);
-  return <div>{context} 666</div>;
+  return <div>{context} + ok 666</div>;
 }

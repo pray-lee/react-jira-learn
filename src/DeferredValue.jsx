@@ -15,7 +15,7 @@ export default function DeferredValue() {
 const List = memo(function List({ value }) {
   let items = [];
   console.log(value.length);
-  for (let i = 0; i < 250; i++) {
+  for (let i = 0; i < 10000; i++) {
     items.push(<SlowItem text={value}></SlowItem>);
   }
   return <ul className="items">{items}</ul>;
